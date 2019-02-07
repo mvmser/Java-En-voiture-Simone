@@ -1,6 +1,5 @@
 
 public class Vehicule {
-	
 	//ATTRIBUTS
 	private static int registre = 0;
 
