@@ -4,14 +4,11 @@ public class Main {
 	public static void main(String[] args) {
 		Compteur compteur = new Compteur();
 
-		
 		System.out.println("######## TESTS DES COMPTEURS ########");
 		System.out.println(compteur.to_String());
 		compteur.add(200);
 		System.out.println(compteur.to_String());
 
-		
-		
 		System.out.println("\n\n######## TESTS DES VEHICULES ########");
 		Vehicule vehicule1 = new Vehicule(7);
 		System.out.println(vehicule1.to_String());

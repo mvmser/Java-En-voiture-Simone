@@ -14,7 +14,7 @@ public class Compteur {
 		this.partiel = 0;
 	}
 	
-	//GET : accesseur (retourner les attributs prives)
+	//GETTER : accesseur (retourner les attributs prives)
 	public double getTotalisateur() {
 		return this.totalisateur;
 	}
@@ -22,7 +22,7 @@ public class Compteur {
 		return this.partiel;
 	}
 	
-	//SET : mutateur (modifier les attributs prives)
+	//SETTER : mutateur (modifier les attributs prives)
 	public void setPartiel(double partiel) {
 		this.partiel = partiel;
 	}
@@ -32,15 +32,16 @@ public class Compteur {
 		this.partiel = 0.0;
 	}
 	
+	//ajouter des km au compteur
 	public void add(double km) {
 		this.totalisateur += km;
 		this.partiel += km;
-		//this.totalisateur %= 1000;
-		this.partiel %= 1000;
+		//remise a 0 du compteur tous les 1000km
+		this.partiel %= CONST;
 	}
 	
 	public String to_String(){
-		return "Comtpeur = [totalisateur = "+ this.totalisateur +" | partiel = "+ this.partiel +"]";
+		return "Compteur = [Totalisateur = "+ this.totalisateur +" | Partiel = "+ this.partiel +"]";
 	}
 	
 	
