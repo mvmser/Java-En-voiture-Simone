@@ -21,7 +21,7 @@ public class Vehicule {
 	}
 
 	//GETTER
-	public double getNumImmatriculation() {
+	public int getNumImmatriculation() {
 		return this.numImmatriculation;
 	}
 	
@@ -61,10 +61,8 @@ public class Vehicule {
 		}
 	}	 
 	
-	public void compareTo(Vehicule vehicule){
-		if(this.numImmatriculation == vehicule.getNumImmatriculation()){
-
-		}
+	public int compareTo(Vehicule vehicule){
+		return this.numImmatriculation - vehicule.getNumImmatriculation();
 	}
 	
 	public String to_String(){
