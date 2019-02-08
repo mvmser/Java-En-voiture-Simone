@@ -41,7 +41,9 @@ public class Compteur {
 	}
 	
 	public String to_String(){
-		return "Compteur = [Totalisateur = "+ this.totalisateur +" | Partiel = "+ this.partiel +"]";
+		String compteurString = 
+		String.format("Compteur = [Totalisateur =  %-10.2f | Partiel = %-10.2f]", this.totalisateur, this.partiel );
+		return compteurString;
 	}
 	
 	

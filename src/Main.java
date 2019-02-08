@@ -6,7 +6,7 @@ public class Main {
 
 		System.out.println("######## TESTS DES COMPTEURS ########");
 		System.out.println(compteur.to_String());
-		compteur.add(200);
+		compteur.add(200000);
 		System.out.println(compteur.to_String());
 
 		System.out.println("\n\n######## TESTS DES VEHICULES ########");
