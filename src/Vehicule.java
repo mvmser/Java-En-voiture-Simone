@@ -15,7 +15,7 @@ public class Vehicule {
 	public Vehicule(double consoKm) {
 		this.numImmatriculation = registre;
 		this.compteur = new Compteur();
-		this.jauge = 5.0;
+		this.jauge = 20.0;
 		this.consoKm = consoKm;
 		registre++;
 	}
@@ -39,7 +39,8 @@ public class Vehicule {
 			this.jauge += essence;
 		}
 		else {
-			System.out.println("Trop d'essence");
+			System.out.printf("Votre réservoir a une capacité insuffisante pour mettre %fl d'essence.%n", 
+				this.jauge + essence - RESERVOIR);
 		}	
 	}
 	
@@ -60,12 +61,17 @@ public class Vehicule {
 		}
 	}	 
 	
-	public void compareTo(){
-		
+	public void compareTo(Vehicule vehicule){
+		if(this.numImmatriculation == vehicule.getNumImmatriculation()){
+
+		}
 	}
 	
 	public String to_String(){
-		return "Vehicule " + this.numImmatriculation + ": " + compteur.to_String() + ", Jauge = " + this.jauge +";";
+		String vehiculeString = 
+		String.format("Vehicule %d : %s, Jauge = %.2f;", 
+			this.numImmatriculation, compteur.to_String(), this.jauge );
+		return vehiculeString;
 	}
 	
 	
