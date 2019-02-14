@@ -9,9 +9,9 @@ public class Compteur {
 	final int CONST = 1000;
 	
 	//CONSTRUCTEUR
-	Compteur() {
-		this.totalisateur = 0;
-		this.partiel = 0;
+	public Compteur() {
+		this.totalisateur = 0.0;
+		this.partiel = 0.0;
 	}
 	
 	//GETTER : accesseur (retourner les attributs prives)
