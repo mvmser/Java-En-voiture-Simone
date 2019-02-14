@@ -1,5 +1,5 @@
 
-public class Vehicule {
+public class Vehicule implements Comparable<Vehicule> {
 	//ATTRIBUTS
 	private static int registre = 0;
 
@@ -9,13 +9,13 @@ public class Vehicule {
 	private double consoKm;
 	
 	//CONSTANTE
-	final static private double RESERVOIR = 50.0;
+	final private double RESERVOIR = 50.0;
 	
 	//CONSTRUCTEUR
 	public Vehicule(double consoKm) {
 		this.numImmatriculation = registre;
 		this.compteur = new Compteur();
-		this.jauge = 20.0;
+		this.jauge = 0.0;
 		this.consoKm = consoKm;
 		registre++;
 	}
@@ -25,8 +25,8 @@ public class Vehicule {
 		return this.numImmatriculation;
 	}
 	
-	public void getCompteur() {
-		 this.compteur.to_String();
+	public Compteur getCompteur() {
+		return compteur;
 	}
 	
 	public double getJauge() {
@@ -34,13 +34,14 @@ public class Vehicule {
 	}
 	
 	//METHODES
-	public void mettreDeLessence(double essence){
+	public void mettreDeLessence(double essence) throws CapaciteDepasseeException{
 		if((this.jauge + essence) <= RESERVOIR){
 			this.jauge += essence;
 		}
 		else {
-			System.out.printf("Votre réservoir a une capacité insuffisante pour mettre %fl d'essence.%n", 
-				this.jauge + essence - RESERVOIR);
+			//System.out.printf("Votre réservoir a une capacité insuffisante pour mettre %fl d'essence.%n", this.jauge + essence - RESERVOIR);
+
+			throw new CapaciteDepasseeException("Il y a " + (this.jauge + essence - RESERVOIR) +"l d'essence en trop!!\n");
 		}	
 	}
 	
@@ -53,24 +54,25 @@ public class Vehicule {
 		
 		if(essenceConsommee <= this.jauge){
 			this.jauge -= essenceConsommee;
+			this.compteur.add(distance);
 			return distance;
 		}else{
 			double distanceEffective = distance * this.jauge / essenceConsommee;
 			this.jauge = 0;
+			this.compteur.add(distanceEffective);
 			return distanceEffective;
 		}
 	}	 
 	
 	public int compareTo(Vehicule vehicule){
-		return this.numImmatriculation - vehicule.getNumImmatriculation();
+		return this.numImmatriculation - vehicule.numImmatriculation;
 	}
 	
-	public String to_String(){
+	@Override
+	public String toString(){
 		String vehiculeString = 
-		String.format("Vehicule %d : %s, Jauge = %.2f;", 
-			this.numImmatriculation, compteur.to_String(), this.jauge );
+		String.format("Vehicule %d : %s, Jauge = %.2f;%n", 
+			this.numImmatriculation, compteur.toString(), this.jauge );
 		return vehiculeString;
-	}
-	
-	
+	}	
 }

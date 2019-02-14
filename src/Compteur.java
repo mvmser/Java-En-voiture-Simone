@@ -39,8 +39,9 @@ public class Compteur {
 		//remise a 0 du compteur tous les 1000km
 		this.partiel %= CONST;
 	}
-	
-	public String to_String(){
+
+	@Override
+	public String toString(){
 		String compteurString = 
 		String.format("Compteur = [Totalisateur =  %-10.2f | Partiel = %-10.2f]", this.totalisateur, this.partiel );
 		return compteurString;
